@@ -1,4 +1,4 @@
-# Laravel 8 Eloquent 模型統計儀表板
+# Laravel 9 Eloquent 模型統計儀表板
 
 引入 jhumanj 的 laravel-model-stats 套件來擴增 Eloquent 模型統計儀表板，儀表板以資訊圖像化方式呈現，能快速瞭解模型統計資料。
 

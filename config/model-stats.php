@@ -16,32 +16,55 @@ return [
     |
     */
 
-    'enabled' => env('MODEL_STATS_ENABLED', true),
+    'enabled'            => env('MODEL_STATS_ENABLED', true),
+    'allow_custom_code'  => env('MODEL_STATS_CUSTOM_CODE', false),
 
     /*
     |--------------------------------------------------------------------------
     | Route Middleware
     |--------------------------------------------------------------------------
     |
-    | These middleware will be assigned to every Telescope route, giving you
+    | These middleware will be assigned to every ModelStats route, giving you
     | the chance to add your own middleware to this list or change any of
     | the existing middleware. Or, you can simply stick with this list.
     |
     */
-    'middleware' => [
+    'middleware'         => [
         'web',
         \Jhumanj\LaravelModelStats\Http\Middleware\Authorize::class,
     ],
 
     /*
     |--------------------------------------------------------------------------
+    | ModelStats table name
+    |--------------------------------------------------------------------------
+    |
+    | As PostgreSQL table names seems to use dashes instead of underscore
+    | this configures the table name based on your connection.
+    |
+    */
+    'table_name'         => 'model_stats_dashboards',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database connection
+    |--------------------------------------------------------------------------
+    |
+    | Database connection used to query the data.
+    | This can be used to ensure a read-only connection, by using a custom connection with a read-only user.
+    |
+    */
+    'query_database_connection'         => env('MODEL_STATS_DB_CONNECTION', env('DB_CONNECTION')),
+
+    /*
+    |--------------------------------------------------------------------------
     | Route Prefixes
     |--------------------------------------------------------------------------
     |
-    | You can change the route where your dashboards are. By default routes will
+    | You can change the route where your dashboards are. By default, routes will
     | be starting the '/stats' prefix, and names will start with 'stats.'.
     |
     */
-    'routes_prefix' => 'stats',
+    'routes_prefix'      => 'stats',
     'route_names_prefix' => 'stats.',
 ];
